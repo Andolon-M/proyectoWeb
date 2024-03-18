@@ -1,5 +1,190 @@
 @import url('variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 
-*{
-    padding: 1em;
+* {
+    margin: 0 0;
+    padding: 0 0;
+    font-family: "Red Hat Mono", monospace;
+    font-style: normal;
+}
+
+body{
+    background: var(--color-body);
+    display: flex;
+    justify-content: space-between;
+    
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+   /* overflow-x: hidden;*/
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0em;
+    width: 100%;
+        
+}
+nav div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 90%;
+}
+nav a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--color-primary);
+    font-size: 2em;
+    font-weight: 600;
+    
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a{
+    margin: 0 1em;
+    font-weight: 600;
+    color: var(--color-white);
+    text-transform: capitalize;
+    font-size: 1.1em;
+}
+
+.button__primary{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--color-white);
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.4em 0.4em;
+    background: var(--color-primary);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+header{
+    display: grid;
+    width: 80%;
+    height: 87vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "header_title imagen_header"
+    ;
+    
+}
+.header__title{
+    grid-area: header_title;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.header__title h1{
+    color: var(--color-primary);
+    font-size: 4rem;
+    font-weight: 500;
+    margin: 0em;
+}
+.header__title h3{
+    color: var(--color-white);
+    font-weight: 500;
+    margin-top: 0.7m;
+    margin-bottom: 1.5em;
+}
+.header__imagen{
+    grid-area: imagen_header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 97%;
+    min-width: 250px;
+}
+.header__imagen img{
+    width: 100% ;
+    height: auto;
+    object-fit: contain;
+    
+} 
+
+.about{
+    display: grid;
+    width: 80%;
+    height: 80vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "about__imagen about__title"
+    ;
+    
+}
+.about article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__imagen{
+    grid-area: imagen_header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    min-width: 250px;
+
+}
+
+.about__imagen img{
+    grid-area: about__imagen;
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+
+.about__title{
+    grid-area: about__title;
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    
+    
+}
+
+.about__title h1{
+    color: var(--color-white);
+    font-size: 3em;
+    font-weight: 500;
+    margin: 0.3em 0em;
+    width: 80%;
+}
+
+.about__title h4{
+    color: var(--color-primary);
+    font-weight: 500;
+    margin: 0.3em 0em;
+    width: 80%;
+}
+.about__title p{
+    color: var(--color-white);
+    font-weight: 500;
+    margin-top: 0.7m;
+    margin-bottom: 1.5em;
+    width: 60%;
 }

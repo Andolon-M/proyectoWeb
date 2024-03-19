@@ -2,21 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 
 * {
-    margin: 0 0;
-    padding: 0 0;
+    margin: 0em 0em;
+    padding: 0em 0em;
     font-family: "Red Hat Mono", monospace;
     font-style: normal;
 }
 
-body{
+body {
     background: var(--color-body);
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
-   /* overflow-x: hidden;*/
+    /* overflow-x: hidden;*/
 }
 
 nav {
@@ -25,23 +24,28 @@ nav {
     align-items: center;
     padding: 1em 0em;
     width: 100%;
-        
+    position: fixed;
+    background: #1e1d2bc9;
+    backdrop-filter: blur(5px);
 }
-nav div{
+
+nav div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     width: 90%;
 }
+
 nav a {
     text-decoration: none;
     text-transform: capitalize;
     color: var(--color-primary);
     font-size: 2em;
     font-weight: 600;
-    
+
 }
+
 nav ul {
     display: flex;
     list-style: none;
@@ -50,7 +54,8 @@ nav ul {
     margin: 0;
     padding: 0;
 }
-nav ul li a{
+
+nav ul li a {
     margin: 0 1em;
     font-weight: 600;
     color: var(--color-white);
@@ -58,17 +63,17 @@ nav ul li a{
     font-size: 1.1em;
 }
 
-.button__primary{
+.button__primary {
     text-decoration: none;
     text-transform: capitalize;
     color: var(--color-white);
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: 600;
-    padding: 0.4em 0.4em;
+    padding: 0.4em 1em;
     background: var(--color-primary);
 }
 
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,17 +81,19 @@ main{
     width: 100%;
 }
 
-header{
+header {
+    margin-top: 2em;
     display: grid;
     width: 80%;
     height: 87vh;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    "header_title imagen_header"
+    grid-template-areas:
+        "header_title imagen_header"
     ;
-    
+
 }
-.header__title{
+
+.header__title {
     grid-area: header_title;
     width: 100%;
     height: auto;
@@ -95,19 +102,22 @@ header{
     align-items: start;
     flex-direction: column;
 }
-.header__title h1{
+
+.header__title h1 {
     color: var(--color-primary);
     font-size: 4rem;
     font-weight: 500;
     margin: 0em;
 }
-.header__title h3{
+
+.header__title h3 {
     color: var(--color-white);
     font-weight: 500;
     margin-top: 0.7m;
     margin-bottom: 1.5em;
 }
-.header__imagen{
+
+.header__imagen {
     grid-area: imagen_header;
     display: flex;
     justify-content: center;
@@ -115,30 +125,31 @@ header{
     width: 97%;
     min-width: 250px;
 }
-.header__imagen img{
-    width: 100% ;
+
+.header__imagen img {
+    width: 100%;
     height: auto;
     object-fit: contain;
-    
-} 
 
-.about{
+}
+
+.about {
     display: grid;
     width: 80%;
-    height: 80vh;
+    padding: 3em 0em;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    "about__imagen about__title"
+    grid-template-areas:
+        "about__imagen about__title"
     ;
-    
 }
-.about article{
+
+.about article {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.about__imagen{
+.about__imagen {
     grid-area: imagen_header;
     display: flex;
     justify-content: center;
@@ -148,43 +159,395 @@ header{
 
 }
 
-.about__imagen img{
+.about__imagen img {
     grid-area: about__imagen;
     height: auto;
     width: 100%;
     object-fit: contain;
 }
 
-.about__title{
+.about__title {
     grid-area: about__title;
-    width: 90%;
+    width: 100%;
     height: 80%;
     display: flex;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    
-    
+
+
 }
 
-.about__title h1{
+.about__title h1 {
     color: var(--color-white);
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 500;
     margin: 0.3em 0em;
-    width: 80%;
+
+    max-width: 80%;
 }
 
-.about__title h4{
+.about__title h4 {
     color: var(--color-primary);
     font-weight: 500;
     margin: 0.3em 0em;
     width: 80%;
 }
-.about__title p{
+
+.about__title p {
     color: var(--color-white);
     font-weight: 500;
     margin-top: 0.7m;
     margin-bottom: 1.5em;
     width: 60%;
+}
+
+.footmenu {
+    display: grid;
+    width: 80%;
+    height: 80vh;
+    margin: 3em 0em;
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-areas:
+        "services"
+        "description"
+        "foot_menu"
+        "foot_menu"
+        "foot_menu"
+        "foot_menu"
+        "foot_menu"
+        "foot_menu"
+        "foot_menu"
+    ;
+}
+
+.footmenu__title {
+    grid-area: services;
+}
+
+.footmenu__description {
+    grid-area: description;
+}
+
+.footmenu__options {
+    grid-area: foot_menu;
+}
+
+.services_title,
+.services__description,
+.footmenu__title,
+.footmenu__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.services_title h4,
+.footmenu__title h4 {
+    color: var(--color-primary);
+    font-size: 1.2em;
+    margin: 0em 0em;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.services__description h1,
+.footmenu__description h1 {
+    color: var(--color-white);
+    font-size: 2.5em;
+    margin: 0em 0em;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.footmenu__options {
+    grid-area: foot_menu;
+    max-width: 100%;
+    margin: 2em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        " option_1 option_2 option_3"
+    ;
+    gap: 0.3em;
+
+}
+
+.footmenu__foot1 {
+    grid-area: option_1;
+}
+
+.footmenu__foot2 {
+    grid-area: option_2;
+}
+
+.footmenu__foot3 {
+    grid-area: option_3;
+}
+
+.footmenu__foot1,
+.footmenu__foot2,
+.footmenu__foot3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background: var(--color-base);
+    border-radius: 10px;
+    padding: 1em;
+
+}
+
+.footmenu__foot1 i,
+.footmenu__foot2 i,
+.footmenu__foot3 i {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    font-size: 2em;
+    color: var(--color-primary)
+}
+
+
+.foot__photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+    height: 50%;
+
+}
+
+.services__photo img,
+.foot__photo img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.info__services,
+.info__foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+
+}
+
+
+.info__foot h1,
+.info__foot p,
+.info__foot h4 {
+    font-weight: 450;
+    text-align: center;
+
+}
+
+.info__foot h1 {
+    color: var(--color-black);
+    font-size: 1.4em;
+    margin: 0.2em 0.5em;
+}
+
+.info__foot h4 {
+    color: var(--color-primary);
+    font-size: 0.8em;
+    margin: 0.2em .5em;
+}
+
+.info__foot p {
+    color: var(--color-black);
+    font-size: 0.9em;
+    margin: 0em .5em;
+}
+
+.services {
+    display: grid;
+    width: 80%;
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-areas:
+        "services_title"
+        "description_services"
+        "services"
+        "services"
+        "services"
+        "services"
+        "services"
+        "services"
+        "services"
+    ;
+}
+
+.services__title {
+    grid-area: services_title;
+}
+
+.services__description {
+    grid-area: description_services;
+}
+
+.services__options {
+    grid-area: services;
+    width: 100%;
+    margin: 1em 2em;
+    display: grid;
+    align-items: start;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        " serevices1 serevices2 serevices3"
+    ;
+
+}
+.services__photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+.services_1 {
+    grid-area: serevices1;
+}
+
+.services_2 {
+    grid-area: serevices2;
+}
+
+.services_3 {
+    grid-area: serevices3;
+}
+
+.services_1,
+.services_2,
+.services_3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+
+}
+
+.info__services h1,
+.info__services p {
+    font-weight: 450;
+    text-align: center;
+}
+
+.info__services h1 {
+    color: var(--color-primary);
+    font-size: 1.8em;
+    margin: 1em 0em;
+
+    text-transform: capitalize;
+}
+
+.info__services p {
+    color: var(--color-white);
+    font-size: 1.2em;
+    
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60vh;
+    padding: 3em 0em;
+}
+
+.contact div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    padding: 3em 0em;
+    background: white;
+    border-radius: 10px;
+}
+
+.contact h1 {
+    font-weight: 700;
+    text-align: center;
+    font-size: 3em;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    height: 40vh;
+    background: var(--color-body);
+    padding: 2em 0em;
+}
+
+footer div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-direction: column;
+    height: 100%;
+    color: white;
+    gap: 1em;
+}
+
+footer div span {
+    width: 30%;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.redes_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.redes_footer li {
+    width: 27px;
+    height: 27px;
+    background: var(--color-primary);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.redes_footer li {
+    font-size: 1.3em;
+}
+
+footer div h1 {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.3em;
+    text-transform: capitalize;
+
+}
+
+footer div ul li,
+footer div ul li a {
+    text-decoration: none;
+    list-style: none;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 600;
 }

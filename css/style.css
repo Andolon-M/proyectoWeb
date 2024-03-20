@@ -147,9 +147,7 @@ body {
         width: 80%;
         padding: 3em 0em;
         grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "about__imagen about__title"
-        ;
+        
     }
 
     .about article {
@@ -702,7 +700,8 @@ body {
         height: auto;
         gap: 1em;
         margin: 3em 0em;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        
         
     }
 

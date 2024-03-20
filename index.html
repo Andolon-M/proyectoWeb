@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing pages de hamburguesa</title>
     <link rel="stylesheet" href="css/style.css">
+    
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
@@ -14,13 +15,19 @@
     <nav>
         <div>
             <a href="#">Foods</a>
-            <ul>
-                <li><a href="#home">home</a></li>
-                <li><a href="#about">about</a></li>
-                <li><a href="#menu">menu</a></li>
-                <li><a href="#services">service</a></li>
-                <li><a href="#contact">contact</a></li>
-            </ul>
+           
+            <div class="navbar-menu" id="navbar-menu">
+                <ul>
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#menu">menu</a></li>
+                    <li><a href="#services">service</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+            </div>
+            <button id="navbar-toggle" class="navbar-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
         </div>
 
     </nav>
@@ -38,15 +45,9 @@
         </header>
         <section id="about" class="about">
             <article>
-                <div class="about__imagen">
-                    <img src="storage/img/about.png" alt="">
-                </div>
-
-            </article>
-            <article>
                 <div class="about__title">
                     <h4>About Us</h4>
-                    <h1>We speak the good food language</h1>
+                    <h1 class="title__section">We speak the good food language</h1>
                     <p>
                         It is a long established fact that a
                         be distracted by the readable content
@@ -56,6 +57,13 @@
                 </div>
 
             </article>
+            <article>
+                <div class="about__imagen">
+                    <img src="storage/img/about.png" alt="">
+                </div>
+
+            </article>
+            
         </section>
 
         <section id="menu" class="footmenu">
@@ -63,7 +71,7 @@
                 <h4>Food Menu</h4>
             </article>
             <article class="footmenu__description">
-                <h1>Fresh taste and grat price</h1>
+                <h1 class="title__section">Fresh taste and grat price</h1>
             </article>
             <article class="footmenu__options">
 
@@ -117,7 +125,7 @@
                 <h4>services</h4>
             </article>
             <article class="services__description">
-                <h1>We provide best food services</h1>
+                <h1 class="title__section">We provide best food services</h1>
             </article>
             <article class="services__options">
 
@@ -168,7 +176,7 @@
 
         <section id="contact" class="contact">
             <div>
-                <h1>
+                <h1 class="">
                     We make quality food
                     Everyday
                 </h1>
@@ -220,7 +228,7 @@
             </ul>
         </div>
         <div>
-            
+
             <h1 class="titulo_footer">information</h1>
             <span class="linea_footer"></span>
             <ul class="lista_footer">
@@ -249,15 +257,25 @@
                     <a href="#"><i class='bx bxl-twitter'></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class='bx bxl-tiktok' ></i></a>
+                    <a href="#"><i class='bx bxl-tiktok'></i></a>
                 </li>
             </ul>
         </div>
 
     </footer>
+<script>
+        document.getElementById('navbar-toggle').addEventListener('click', function () {
+            var menu = document.getElementById('navbar-menu');
+            if (menu.style.display == 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>

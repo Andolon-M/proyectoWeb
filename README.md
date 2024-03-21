@@ -1,6 +1,6 @@
 # Landing pages de hamburguesa
 
-![](C:\xampp\htdocs\Campus\ProyectoCampus_2\proyectoWeb\hambusgesas version movil y escirtorio.gif)
+![](https://drive.google.com/file/d/1hUPHpHA_VmV1Y0f7ENMhdFPUL6TuZqdn/view?usp=sharing)
 
 
 

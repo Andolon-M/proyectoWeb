@@ -8,16 +8,15 @@
 }
 
 body {
-    background: var(--color-base);
     display: grid;
     width: 100%;
     height: 100vh;
     grid-template-columns: 27% auto;
     grid-template-rows: 100%;
-    grid-template-areas: 
-    "sidebar dashboard"
+    grid-template-areas:
+        "sidebar dashboard"
     ;
-    
+
 }
 
 .sidebar {
@@ -31,14 +30,16 @@ body {
     justify-content: center;
     padding-right: 5em;
 }
-.sidebar article{
-    
+
+.sidebar article {
+
     background: var(--color-primary);
     width: 96%;
-    height: 90%;
+    height: 97%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
 .dashboard-container {
     grid-area: dashboard;
     background: var(--color-base);
@@ -48,24 +49,28 @@ body {
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    
+
 }
-.dashboard-container :last-child{
+
+.articulos {
     display: flex;
     flex-wrap: wrap;
 
 }
-.dashboard-container article{
+
+.dashboard-container article {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 98%;
-    height: 90%;
+    height: 97%;
     border: solid 3px var(--color-primary);
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+
 }
 
-.header{
+.header {
     width: 100%;
     height: 15%;
     margin-bottom: 1em;
@@ -73,25 +78,27 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
-.header h1{
+.header h1 {
     font-size: 2em;
     font-weight: 600;
     color: var(--color-base);
     margin-left: 0.5em;
 }
-main{
+
+main {
     width: 100%;
     height: 72%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    
+
 }
-.navbar{
+
+.navbar {
     width: 95%;
     height: 100%;
     display: flex;
@@ -102,13 +109,14 @@ main{
     background: var(--color-base);
     border-radius: 10px;
 }
-.icono-nav{
+
+.icono-nav {
     width: 1.2em;
     height: auto;
-    
+
 }
 
-.navbar ul{
+.navbar ul {
     width: 100%;
     height: 100%;
     display: flex;
@@ -121,7 +129,7 @@ main{
     margin: 1em;
 }
 
-.navbar ul li{
+.navbar ul li {
     width: 100%;
     height: 100%;
     display: flex;
@@ -129,23 +137,35 @@ main{
     align-items: center;
     gap: 0.5em;
     padding: 0.5rem;
-    
+
 
 }
-.navbar ul li a{
+
+.navbar ul li a {
     text-decoration: none;
     color: var(--color-primary);
     font-size: 1.1em;
     font-weight: 600;
 }
-.navbar ul li i{
+
+.navbar ul li i {
     color: var(--color-primary);
     font-size: 1.3em;
-    
+
+}
+
+.num_carritos {
+    width: 2em;
+    height: 2em;
+    background: var(--color-secundary);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
-footer{
+footer {
     width: 100%;
     height: 10%;
     display: flex;
@@ -157,23 +177,25 @@ footer{
 }
 
 
-footer p{
+footer p {
     margin: 1em;
 }
 
-.titulo__pagina{
+.titulo__pagina {
     width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
 }
-.titulo__pagina h1{
+
+.titulo__pagina h1 {
     margin-left: 1.5em;
     color: var(--color-primary);
     text-transform: capitalize;
 
 }
-.articulo{
+
+.articulo {
     width: 20vw;
     height: 50vh;
     display: flex;
@@ -187,18 +209,20 @@ footer p{
     background: white;
 }
 
-.articulo__foto{
+.articulo__foto {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    
+
 }
-.articulo__foto img{
+
+.articulo__foto img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-.articulo__info{
+
+.articulo__info {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -211,35 +235,39 @@ footer p{
 }
 
 .articulo__info div:first-child,
-.articulo__info div:last-child{
+.articulo__info div:last-child {
     display: flex;
     align-items: center;
     width: 90%;
     margin: 0.5em 0em;
 }
+
 .articulo__info div:first-child {
     background: none;
 }
-.articulo__info div:first-child h3{
+
+.articulo__info div:first-child h3 {
     color: var(--color-base);
     text-transform: capitalize;
     font-weight: 500;
     font-size: 1em;
 }
-.articulo__info div:last-child{
+
+.articulo__info div:last-child {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
 
-.articulo__info div:last-child p{
+.articulo__info div:last-child p {
     color: var(--color-secundary);
     font-size: 1.1em;
     font-weight: 500;
-    
+
 }
-.articulo__info div:last-child a{
+
+.articulo__info div:last-child a {
     color: var(--color-primary);
     font-size: 1em;
     font-weight: 500;
@@ -248,4 +276,150 @@ footer p{
     border-radius: 10px;
     text-decoration: none;
     text-transform: capitalize;
+}
+
+@media (width < 951px) {
+    body {
+        display: grid;
+        width: 100%;
+        height: 100vh;
+        grid-template-rows: auto 9%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "dashboard"
+            "sidebar"
+        ;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        padding-right: 0em;
+        bottom: 0;
+        position: fixed;
+    }
+
+    .sidebar article {
+
+        background: var(--color-primary);
+        width: 100%;
+        height: 12vh;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+        
+    }
+
+    .header {
+        width: 100%;
+        margin: 0.5em 1em;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: var(--color-base);
+        margin-left: 0.5em;
+    }
+
+
+    main {
+        height: 48%;
+        flex-direction: row;
+        
+    }
+
+    .navbar {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0;
+        justify-content: space-between;
+        
+    }
+
+    .icono-nav {
+        width: 1.7em;
+        height: auto;
+
+    }
+
+    .navbar ul {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        list-style-type: none;
+        text-transform: capitalize;
+        gap: 0em;
+        margin: 0em 0em;
+    }
+    .navbar ul:first-child{
+        width: 75%;
+        border-right: solid 1px var(--color-secundary);
+    } .navbar ul:last-child{
+        width: 20%;
+    }
+
+    .navbar ul li {
+        gap: 0em;
+        padding: 0rem;
+    }
+    .navbar ul:first-child li{
+        
+        width: fit-content;
+    }
+
+    .navbar ul li a {
+        display: none;
+        text-decoration: none;
+        color: var(--color-primary);
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .navbar ul li i {
+        color: var(--color-primary);
+        font-size: 2.5em;
+
+    }
+
+    .num_carritos {
+        width: 1.7em;
+        height: 1.7em;
+        background: var(--color-secundary);
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    footer {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: end;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 1em;
+        color: var(--color-secundary);
+    }
+
+
+    footer p {
+        margin: 0em;
+    }
+
 }

@@ -6,6 +6,6 @@ typora-copy-images-to: upload
 
 
 
-![Imagen del responsive](https://drive.google.com/file/d/1hUPHpHA_VmV1Y0f7ENMhdFPUL6TuZqdn/view?usp=sharing)
+![Imagen del responsive](https://github.com/Andolon-M/proyectoWeb/blob/d5d9930701332cc39b6595d24921b37674d5314d/hambusgesas%20version%20movil%20y%20escirtorio.gif)
 
 **By Anderson Mendez for CampusLands**

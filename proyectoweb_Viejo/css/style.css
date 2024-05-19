@@ -1,4 +1,32 @@
-@import url('variables.css');
+
+:root {
+    --color-primary: #33211D;
+    --color-secundary: #CDA16B;
+    --color-base: #FFFBF2;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    /* color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424; */
+  
+    color: #213547;
+    background-color: #ffffff;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+} */
 
 * {
     margin: 0em 0em 0em 0em;
@@ -11,6 +39,9 @@ body {
     display: grid;
     width: 100%;
     height: 100vh;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
     grid-template-columns: 27% auto;
     grid-template-rows: 100%;
     grid-template-areas:
@@ -68,7 +99,7 @@ body {
     height: 97%;
     border: solid 3px var(--color-primary);
     box-sizing: border-box;
-    
+
 
 }
 
@@ -142,21 +173,21 @@ main {
     border-bottom-right-radius: 0%;
     padding: 0.1em;
     border-right: solid 2px transparent;
-    border: solid 2px transparent; 
+    border: solid 2px transparent;
     background: none;
 }
 
-.selected{
+.selected {
     border: solid 2px var(--color-primary) !important;
 }
 
 .navbar ul li:hover {
     box-sizing: border-box;
-    border-color: var(--color-secundary); 
+    border-color: var(--color-secundary);
     border-right: solid 2px transparent;
     width: 96%;
     transition: border-color 0.3s ease-in-out;
-    
+
 }
 
 .navbar ul li a {
@@ -303,6 +334,7 @@ footer p {
     text-transform: capitalize;
     border: solid 2px transparent;
 }
+
 .articulo__info div:last-child a:hover {
     box-shadow: 0px 0px 3px var(--color-secundary);
     border-radius: 5px;
@@ -324,6 +356,7 @@ footer p {
             "sidebar"
         ;
     }
+
     .dashboard-container {
         grid-area: dashboard;
         background: var(--color-base);
@@ -335,7 +368,7 @@ footer p {
         justify-content: center;
         overflow: hidden;
     }
-    
+
     .articulos {
         display: flex;
         align-items: start;
@@ -346,12 +379,14 @@ footer p {
         height: 91%;
         background: none;
     }
+
     .dashboard-container article {
         border: none;
         width: 100%;
         height: 97%;
-        
+
     }
+
     .articulo {
         width: 45%;
         height: 50vh;
@@ -386,7 +421,7 @@ footer p {
         height: 12vh;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 0px;
-        
+
     }
 
     .header {
@@ -409,7 +444,7 @@ footer p {
     main {
         height: 48%;
         flex-direction: row;
-        
+
     }
 
     .navbar {
@@ -421,7 +456,7 @@ footer p {
         gap: 0;
         justify-content: space-between;
         background: var(--color-base);
-        
+
     }
 
     .icono-nav {
@@ -442,37 +477,42 @@ footer p {
         gap: 0em;
         margin: 0em 0em;
     }
-    .navbar ul:first-child{
+
+    .navbar ul:first-child {
         width: 75%;
         border-right: solid 1px var(--color-secundary);
-    } .navbar ul:last-child{
+    }
+
+    .navbar ul:last-child {
         width: 20%;
     }
+
     .navbar ul li {
         border-radius: 5px;
         border-right: solid 2px transparent;
-        border: solid 2px transparent; 
+        border: solid 2px transparent;
         background: none;
     }
-    
-    .selected{
+
+    .selected {
         border: solid 2px var(--color-primary) !important;
     }
-    
+
     .navbar ul li:hover {
         box-sizing: border-box;
-        border-color: var(--color-secundary); 
+        border-color: var(--color-secundary);
         width: 96%;
         transition: border-color 0.3s ease-in-out;
-        
+
     }
 
     .navbar ul li a {
         gap: 0em;
         padding: 0rem;
     }
-    .navbar ul:first-child li{
-        
+
+    .navbar ul:first-child li {
+
         width: fit-content;
     }
 

@@ -76,11 +76,7 @@ export class MyDashboard extends LitElement {
         // Esperar a que se complete la actualización del componente antes de emitir el evento
         await this.updateComplete;
 
-        this.dispatchEvent(new CustomEvent('changeCarrito', {
-            detail: { item },
-            bubbles: true,
-            composed: true
-        }));
+        this.actualizarNumberCarrito();
     }
 
     render() {
@@ -155,18 +151,12 @@ export class MyDashboard extends LitElement {
     incrementarCantidad(item) {
         // Lógica para incrementar la cantidad del artículo
         item.cantidad++;
+
         addOrUpdateProductToCarrito(item, true);
+        // console.log(item.cantidad);}
 
-        console.log(item.cantidad);
+        // this.actualizarNumberCarrito() //incrementa  el boton del navbar
         this.requestUpdate();
-
-
-        this.dispatchEvent(new CustomEvent('changeCarrito', {
-            detail: { item },
-            bubbles: true,
-            composed: true
-        }));
-
     }
 
     decrementarCantidad(item) {
@@ -182,12 +172,7 @@ export class MyDashboard extends LitElement {
             addOrUpdateProductToCarrito(item, true);
         }
 
-        this.dispatchEvent(new CustomEvent('changeCarrito', {
-            detail: { item },
-            bubbles: true,
-            composed: true
-        }));
-
+        // this.actualizarNumberCarrito()//decrementa el boton del navbar
         this.requestUpdate();
     }
 
@@ -195,10 +180,21 @@ export class MyDashboard extends LitElement {
         // Lógica para eliminar el artículo del carrito
         //logica para eliminarlo del array actual data
         this.data = this.data.filter(i => i.id !== item.id || i.categorie !== item.categorie);
+
+        this.actualizarNumberCarrito(); //actualiza el numero del navbar
         this.requestUpdate();
 
         //se llama a la funcion que elimina el producto en la base de datos
         deleteProductFromCarrito(item.id)
+
+    }
+    
+    async actualizarNumberCarrito(){
+
+        this.dispatchEvent(new CustomEvent('changeCarrito', {
+            bubbles: true,
+            composed: true
+        }));
     }
 
     calcularTotal() {

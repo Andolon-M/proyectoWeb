@@ -8,19 +8,17 @@ export class MyNavbar extends LitElement {
   static properties() {
     return {
       pageSelected: { type: String },
-      numCarrito: { type: Number }
+      numCarrito: { type: Number },
+      
     };
   }
 
   constructor() {
     super();
     this.pageSelected = "allProducts"; // Selección inicial
-    this.numCarrito = 0;
     this.writeNumberCarrto();
+
   }
-
- 
-
 
   pagination(e) {
     let currentLi = e.target.closest('li');
@@ -34,12 +32,12 @@ export class MyNavbar extends LitElement {
   }
 
   async writeNumberCarrto() {
-    let productosCarrito = await getCarrito()
-    this.numCarrito = productosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
-    console.log("soy el evento ")
+    console.log("soy el evento")
     
-
-    console.log(productosCarrito.reduce((total, producto) => total + producto.cantidad, 1))
+    const carrito = await getCarrito();
+    console.log(carrito)
+    this.numCarrito = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+ 
     this.requestUpdate();
     
   }

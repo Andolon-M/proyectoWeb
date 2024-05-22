@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
-
-const addresIp = '172.16.101.146:5642'
+const ipLocal = '127.0.0.1:5501'
+const ipServer = '172.16.101.146:5642'
+const addresIp = ipServer
 
 export const getAll = async () => {
     let data = [];

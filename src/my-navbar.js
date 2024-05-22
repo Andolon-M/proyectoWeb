@@ -22,7 +22,7 @@ export class MyNavbar extends LitElement {
 
   pagination(e) {
     let currentLi = e.target.closest('li');
-    const listItems = currentLi.parentElement.querySelectorAll('li');
+    const listItems = currentLi.parentElement.parentElement.querySelectorAll('li');
     // Eliminar la clase 'active' de todos los elementos <li>
     listItems.forEach(item => item.classList.remove('active'));
     // Agregar la clase 'active' solo al elemento seleccionado
@@ -129,7 +129,7 @@ export class MyNavbar extends LitElement {
         font-style: normal;
       } 
 
-       navbar {
+        navbar{
         width: 100%;
         height: 72%;
         display: flex;
@@ -284,16 +284,7 @@ export class MyNavbar extends LitElement {
         height: 91%;
       }
       
-      .dashboard-container article {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        width: 98%;
-        height: 97%;
-        border: solid 3px var(--color-primary);
-        box-sizing: border-box;
       
-      
-      }
       
       .header {
         width: 100%;
@@ -333,6 +324,172 @@ export class MyNavbar extends LitElement {
         margin: 1em;
       }
       
+      @media (width < 951px) {
+        .body {
+            display: grid;
+            width: 100%;
+            height: 100vh;
+            grid-template-rows: auto 9%;
+            grid-template-columns: 100%;
+            grid-template-areas:
+                "dashboard"
+                "sidebar"
+            ;
+        }
+               
+        .sidebar {
+            grid-area: sidebar;
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: center;
+            padding-right: 0em;
+            bottom: 0;
+            position: fixed;
+        }
+      
+        .sidebar article {
+      
+            background: var(--color-base);
+            width: 100%;
+            height: 12vh;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 0px;
+      
+        }
+      
+        .header {
+            width: 100%;
+            margin: 0.5em 1em;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+      
+        }
+      
+        .header h1 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-left: 0.5em;
+        }
+      
+      
+        main {
+            height: 48%;
+            flex-direction: row;
+      
+        }
+      
+        .navbar {
+            width: 100%;
+            height: 85%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0;
+            justify-content: space-between;
+            background: var(--color-base);
+      
+        }
+      
+        .icono-nav {
+            width: 1.1em;
+            height: auto;
+      
+      
+        }
+      
+        .navbar ul {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            list-style-type: none;
+            text-transform: capitalize;
+            gap: 0em;
+            margin: 0em 0em;
+        }
+      
+        .navbar ul:first-child {
+            width: 75%;
+            border-right: solid 1px var(--color-secundary);
+        }
+      
+        .navbar ul:last-child {
+            width: 20%;
+        }
+      
+        .navbar ul li {
+            border-radius: 5px;
+            border-right: solid 2px transparent;
+            border: solid 2px transparent;
+            background: none;
+        }
+      
+        .selected {
+            border: solid 2px var(--color-primary) !important;
+        }
+      
+        .navbar ul li:hover {
+            box-sizing: border-box;
+            border-color: var(--color-secundary);
+            width: 96%;
+            transition: border-color 0.3s ease-in-out;
+      
+        }
+      
+        .navbar ul li a {
+            gap: 0em;
+            padding: 0rem;
+        }
+      
+        .navbar ul:first-child li {
+      
+            width: fit-content;
+        }
+      
+        .navbar ul li a span {
+            display: none;
+        }
+      
+        .navbar ul li i {
+            color: var(--color-primary);
+            font-size: 1.6em;
+      
+        }
+      
+        .num_carritos {
+            width: 1.7em;
+            height: 1.7em;
+            background: var(--color-secundary);
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+      
+      
+        footer {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            align-items: end;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 0.8em;
+            color: var(--color-secundary);
+        }
+      
+      
+        footer p {
+            margin: 0em;
+        }
+      
+      }
             
         `
   }

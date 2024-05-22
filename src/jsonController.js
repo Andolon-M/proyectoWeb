@@ -1,5 +1,7 @@
 import fs from 'fs/promises';
 
+const addresIp = '172.16.101.146:5642'
+
 export const getAll = async () => {
     let data = [];
 
@@ -31,7 +33,9 @@ export const changeId = async (datos, nameCategorie) => {
 
 export const getOneCategory = async (category) => {
 
-    let res = await fetch(`http://localhost:5501/${category}`);
+    let res = await fetch(`http://${addresIp}/${category}`);
+    // //local server
+    // let res = await fetch(`http://localhost:5501/${category}`);
     let data = await res.json();
     changeId(data, category)
     return data;
@@ -51,7 +55,10 @@ export const generateId = async (data) => {
 
 
 export const getCarrito = async () => {
-    const res = await fetch('http://localhost:5501/carrito');
+    //local
+    //const res = await fetch('http://localhost:5501/carrito');
+    
+    const res = await fetch(`http://${addresIp}/carrito`);
     return await res.json();
 };
 
@@ -77,7 +84,9 @@ export const addOrUpdateProductToCarrito = async (newProducto, isFromCarrito) =>
                 productFound = true;
 
                 // Realizar una solicitud PATCH para actualizar la cantidad del producto
-                await fetch(`http://localhost:5501/carrito/${item.id}`, {
+                //local
+                //await fetch(`http://localhost:5501/carrito/${item.id}`, {
+                    await fetch(`http://${addresIp}/carrito/${item.id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -92,7 +101,9 @@ export const addOrUpdateProductToCarrito = async (newProducto, isFromCarrito) =>
         if (!productFound) {
             const newId = await generateId(data);
             newProducto.id = newId;
-            await fetch('http://localhost:5501/carrito', {
+            //local:
+            //await fetch('http://localhost:5501/carrito', {
+            await fetch(`http://${addresIp}/carrito`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -109,7 +120,10 @@ export const addOrUpdateProductToCarrito = async (newProducto, isFromCarrito) =>
 
 export const deleteProductFromCarrito = async (id) => {
     try {
-        await fetch(`http://localhost:5501/carrito/${id}`, {
+        //local
+
+        //await fetch(`http://localhost:5501/carrito/${id}`, {
+        await fetch(`http://${addresIp}/carrito/${id}`, {
             method: 'DELETE'
         });
         console.log('Producto eliminado del carrito exitosamente.');

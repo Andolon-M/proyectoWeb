@@ -1,62 +1,99 @@
 import { LitElement, css, html } from 'lit'
+import { addOrUpdateProductToCarrito, getAll, getOneCategory } from './jsonController';
 
 export class MyDashboard extends LitElement{
     static get properties() {
         return {
-          page: { type: String }
+          page: { type: String },
+          pageTitle: {type: String},
+          data: {type: Array}
         };
     }
 
     constructor() {
         super();
-        
+        this.pageTitle = 'Todos los Productos'
+        this.data = [];
       }
 
       updated(changedProperties) {
         if (changedProperties.has('page')) {
-          this.handlePageSelectedChange();
+            
+          this.handlePageSelected();
         }
       }
     
       // Función para manejar el cambio en page
-      handlePageSelectedChange() {
+       async handlePageSelected()  {
         
-        console.log(this.page);
         if (this.page == 'allProducts'){
-            
+            this.pageTitle = 'Todos los Productos'
+            this.data = await getAll();
+            // console.log(this.data)
+
         }
-
-
+        else if (this.page == 'abrigos'){
+            this.pageTitle = 'Abrigos'
+            this.data = await getOneCategory('abrigo');
+            // console.log(this.data)
+        }
+        else if (this.page == 'pantalones'){
+            this.pageTitle = 'Pantalones'
+            this.data = await getOneCategory('pantalon');
+            // console.log(this.data)
+        }
+        else if (this.page == 'camisetas'){
+            this.pageTitle = 'Camisetas'
+            this.data = await getOneCategory('camiseta');
+            // console.log(this.data)
+        }
+        else if (this.page == 'carrito'){
+            this.pageTitle = 'Tu Carrito'
+            this.data = await getOneCategory('carrito');
+            
+            // console.log(this.data)
+        }
+        this.requestUpdate();
       }
 
-
+      addCarrito(item){
+        console.log(item)
+        let newProduct = {}
+        let nameCategorie = item.id.split('-')[0]
+        let numId = item.id.split('-')[1]
+        newProduct.categorie= nameCategorie 
+        newProduct.idInCategorie = numId
+        newProduct.cantidad = 1
+        
+        
+        addOrUpdateProductToCarrito(newProduct)
+      }
 
     render(){
         return html`
         <section class="dashboard-container">
             <article>
                 <div class="titulo__pagina">
-                    <h1>${this.page}</h1>
+                    <h1>${this.pageTitle}</h1>
                 </div>
                 <div class="articulos">
                     <!-- Este sera el web component hijo para mostrar cada articulo -->
+                     ${this.data.map(item => html`
                     <div class="articulo">
-                    
                         <div class="articulo__foto">
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_787280-MCO51843885132_102022-F.webp" alt="Chaqueta Azul">
+                            <img src="${item.imagen}" alt="${item.nombre}">
                         </div>
                         <div class="articulo__info">
                             <div>
-                                <h3>Chaqueta Impermeable En Gabán Para Dama 'Azul'</h3>
+                                <h3>${item.nombre}</h3>
                             </div>
-                            
-                            <div >
-                                <p>Precio: $93,900</p> 
-                                <a href="">Agregar</a>
+                            <div>
+                                <p>Precio: ${item.precio}</p>
+                                <a @click="${()=>this.addCarrito(item)}" href="#">Agregar</a>
                             </div>
                         </div>
-                        
                     </div>
+                `)}
                 </div>
 
             </article>

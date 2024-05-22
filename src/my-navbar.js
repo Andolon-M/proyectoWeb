@@ -12,14 +12,22 @@ export class MyNavbar extends LitElement {
 
   constructor() {
     super();
-    this.pageSelected = 'allProducts'; // Selección inicial
+    this.pageSelected = "allProducts"; // Selección inicial
   }
 
   pagination(e) {
-    this.pageSelected = e.target.closest('li'); // Actualizar propiedad reflejada
-    console.log(this.pageSelected);
+    let currentLi= e.target.closest('li');
+
+    const listItems = currentLi.parentElement.querySelectorAll('li');
+    // Eliminar la clase 'active' de todos los elementos <li>
+    listItems.forEach(item => item.classList.remove('active'));
+    // Agregar la clase 'active' solo al elemento seleccionado
+    currentLi.classList.add('active');
+
+    this.pageSelected  = currentLi.id ;
     this.requestUpdate();
-  }
+}
+
   
 
   render() {
@@ -35,9 +43,9 @@ export class MyNavbar extends LitElement {
             <navbar>
                 <div class="navbar">
                     <ul>
-                        <li id="allProducts" @click="${this.pagination}" >
+                        <li id="allProducts" class="active" @click="${this.pagination}" >
                             <a href="#"> 
-                                <i class='bx bxs-store'></i>
+                                <i class='bx bxs-store '></i>
                                 <span>todos los productos</span>
                             </a>
                         </li>
@@ -46,7 +54,7 @@ export class MyNavbar extends LitElement {
                         <li id="pantalones" @click="${this.pagination}"><a href="#"> <img class="icono-nav" src=${icon_pantalones} alt="blank"><span>pantalones</span></a></li>
                     </ul>
                     <ul>
-                        <li><a href="#"><i class='bx bxs-cart'></i><span>carritos</span><small class="num_carritos">3</small></a></li>
+                        <li id="carrito" @click="${this.pagination}"><a href="#"><i class='bx bxs-cart'></i><span>carritos</span><small class="num_carritos">3</small></a></li>
                     </ul>
                 </div>
             </navbar>
@@ -58,9 +66,8 @@ export class MyNavbar extends LitElement {
         </section>
 
         <my-dashboard page="${this.pageSelected}"></my-dashboard>
-        
-        </div>
        
+        </div>
         `
 
   }

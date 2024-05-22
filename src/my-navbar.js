@@ -16,7 +16,8 @@ export class MyNavbar extends LitElement {
   constructor() {
     super();
     this.pageSelected = "allProducts"; // Selección inicial
-    this.writeNumberCarrto();
+    this.numCarrito = 0
+    
 
   }
 
@@ -31,19 +32,18 @@ export class MyNavbar extends LitElement {
     this.requestUpdate();
   }
 
-  async writeNumberCarrto() {
-    console.log("soy el evento")
+  async writeNumberCarrto(newNum) {
     
-    const carrito = await getCarrito();
-    console.log(carrito)
-    this.numCarrito = carrito.reduce((total, producto) => total + producto.cantidad, 0);
- 
+    this.numCarrito=newNum;
     this.requestUpdate();
     
   }
 
-  handleIncrementarCantidad() {
-    this.writeNumberCarrto();
+  handleIncrementarCantidad(changeCarrito) {
+    // console.log("estoy manifestandome")
+    // console.log(changeCarrito.detail)
+    this.writeNumberCarrto(changeCarrito.detail)
+    this.requestUpdate();
   }
 
   render() {
@@ -70,7 +70,7 @@ export class MyNavbar extends LitElement {
                         <li id="pantalones" @click="${this.pagination}"><a href="#"> <img class="icono-nav" src=${icon_pantalones} alt="blank"><span>pantalones</span></a></li>
                     </ul>
                     <ul>
-                        <li id="carrito" @click="${this.pagination}"><a href="#"><i class='bx bxs-cart'></i><span>carritos</span><small class="num_carritos">${this.numCarrito}</small></a></li>
+                        <li id="carrito" @click="${this.pagination}"><a href="#"><i class='bx bxs-cart'></i><span>carrito</span><small class="num_carritos">${this.numCarrito}</small></a></li>
                     </ul>
                 </div>
             </navbar>

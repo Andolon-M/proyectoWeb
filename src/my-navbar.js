@@ -2,33 +2,51 @@ import { LitElement, css, html } from 'lit'
 import './my-dashboard.js';
 import icon_abrigo from './assets/abrigo.svg'
 import icon_pantalones from './assets/pantalones.svg'
+import { getCarrito } from './jsonController.js';
 
 export class MyNavbar extends LitElement {
   static properties() {
     return {
-      pageSelected: { type: String},
+      pageSelected: { type: String },
+      numCarrito: { type: Number }
     };
   }
 
   constructor() {
     super();
     this.pageSelected = "allProducts"; // Selección inicial
+    this.numCarrito = 0;
+    this.writeNumberCarrto();
   }
 
-  pagination(e) {
-    let currentLi= e.target.closest('li');
+ 
 
+
+  pagination(e) {
+    let currentLi = e.target.closest('li');
     const listItems = currentLi.parentElement.querySelectorAll('li');
     // Eliminar la clase 'active' de todos los elementos <li>
     listItems.forEach(item => item.classList.remove('active'));
     // Agregar la clase 'active' solo al elemento seleccionado
     currentLi.classList.add('active');
-
-    this.pageSelected  = currentLi.id ;
+    this.pageSelected = currentLi.id;
     this.requestUpdate();
-}
+  }
 
-  
+  async writeNumberCarrto() {
+    let productosCarrito = await getCarrito()
+    this.numCarrito = productosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
+    console.log("soy el evento ")
+    
+
+    console.log(productosCarrito.reduce((total, producto) => total + producto.cantidad, 1))
+    this.requestUpdate();
+    
+  }
+
+  handleIncrementarCantidad() {
+    this.writeNumberCarrto();
+  }
 
   render() {
     return html`
@@ -54,7 +72,7 @@ export class MyNavbar extends LitElement {
                         <li id="pantalones" @click="${this.pagination}"><a href="#"> <img class="icono-nav" src=${icon_pantalones} alt="blank"><span>pantalones</span></a></li>
                     </ul>
                     <ul>
-                        <li id="carrito" @click="${this.pagination}"><a href="#"><i class='bx bxs-cart'></i><span>carritos</span><small class="num_carritos">3</small></a></li>
+                        <li id="carrito" @click="${this.pagination}"><a href="#"><i class='bx bxs-cart'></i><span>carritos</span><small class="num_carritos">${this.numCarrito}</small></a></li>
                     </ul>
                 </div>
             </navbar>
@@ -65,7 +83,7 @@ export class MyNavbar extends LitElement {
           </article>
         </section>
 
-        <my-dashboard page="${this.pageSelected}"></my-dashboard>
+        <my-dashboard page="${this.pageSelected}"  @changeCarrito="${this.handleIncrementarCantidad}"></my-dashboard>
        
         </div>
         `

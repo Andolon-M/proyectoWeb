@@ -97,16 +97,13 @@
   ],
   "carrito": [
     {
-      "categorie": 3,
-      "idInCategorie": 2,
-      "cantidad": 1,
-      "id": "1"
-    },
-    {
-      "id": "11",
+      "id": "1",
       "categorie": "camiseta",
-      "idInCategorie": "1",
-      "cantidad": 9
+      "idInCategorie": "2",
+      "nombre": "Camiseta Tipo Polo Color Dama Mujer.",
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_649847-MCO43854241255_102020-F.webp",
+      "precio": 26255,
+      "cantidad": 4
     }
   ]
 }

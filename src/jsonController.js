@@ -27,7 +27,6 @@ export const changeId = async (datos, nameCategorie) => {
     for (let item of datos) {
         item.id = nameCategorie +"-"+ item.id;
     }
-    
 }
 
 export const getOneCategory = async (category) => {
@@ -45,9 +44,9 @@ export const generateId = async (data) => {
     }, 0);
 
     // Incrementar el ID más alto en 1 para obtener un nuevo ID único
-    const newId = highestId + 1;
+    const newId = parseInt(highestId,10) + 1;
 
-    return newId;
+    return newId.toString();
 };
 
 
@@ -57,7 +56,7 @@ export const getCarrito = async () => {
 };
 
 
-export const addOrUpdateProductToCarrito = async (newProducto) => {
+export const addOrUpdateProductToCarrito = async (newProducto, isFromCarrito) => {
     try {
         // Obtener el carrito actual
         const data = await getCarrito();
@@ -67,7 +66,14 @@ export const addOrUpdateProductToCarrito = async (newProducto) => {
         for (let item of data) {
             if (item.categorie === newProducto.categorie && item.idInCategorie === newProducto.idInCategorie) {
                 // Si el producto ya existe, aumentar la cantidad
-                item.cantidad += newProducto.cantidad;
+                if (isFromCarrito){
+                    item.cantidad =  newProducto.cantidad;
+                }
+                else{
+                    item.cantidad ++;
+                }
+                
+                
                 productFound = true;
 
                 // Realizar una solicitud PATCH para actualizar la cantidad del producto
@@ -98,6 +104,17 @@ export const addOrUpdateProductToCarrito = async (newProducto) => {
         console.log('Carrito actualizado exitosamente.');
     } catch (error) {
         console.error('Error al actualizar el carrito:', error);
+    }
+};
+
+export const deleteProductFromCarrito = async (id) => {
+    try {
+        await fetch(`http://localhost:5501/carrito/${id}`, {
+            method: 'DELETE'
+        });
+        console.log('Producto eliminado del carrito exitosamente.');
+    } catch (error) {
+        console.error('Error al eliminar el producto del carrito:', error);
     }
 };
 
